@@ -18,7 +18,7 @@ node {
             steps{
                 script{
                     withDockerRegistry([ credentialsId:
-            "irinagrig-dockerhub", url: ""]){
+            "docker-id", url: ""]){
                 app.push()   
                 }
             }
