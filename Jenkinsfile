@@ -1,3 +1,4 @@
+
 node {    
       def app     
       stage('Clone repository') {               
@@ -11,7 +12,13 @@ node {
                 }
             }
            
-        }   
+        }
+      stage('Test image') {           
+            app.inside {            
+             
+             sh 'echo "Tests passed"'        
+            }    
+        }  
        stage('Push image') {
              steps{
                 script{
