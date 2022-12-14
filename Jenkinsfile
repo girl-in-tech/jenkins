@@ -4,11 +4,14 @@ node {
              
             checkout scm    
       }     
-      stage('Build image') {         
-       
-            app = docker.build("magdalenam/test")    
-       }     
-        
+      stage('Docker build') {
+            steps{
+                script{
+                     dockerImage = docker.build("magdalenam/frontend")         
+                }
+            }
+           
+        }   
        stage('Push image') {
              steps{
                 script{
@@ -20,3 +23,4 @@ node {
             }
         }
 }
+
