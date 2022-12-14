@@ -14,10 +14,14 @@ node {
              sh 'echo "Tests passed"'        
             }    
         }     
-       stage('Push image') {
-                                                  docker.withRegistry('https://registry.hub.docker.com', 'git') {            
-       app.push("${env.BUILD_NUMBER}")            
-       app.push("latest")        
-              }    
-           }
+      stage('Docker push') {
+            steps{
+                script{
+                    withDockerRegistry([ credentialsId:
+            "irinagrig-dockerhub", url: ""]){
+                app.push()   
+                }
+            }
+            }
+        }
         }
