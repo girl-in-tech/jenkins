@@ -8,12 +8,12 @@ node {
        
             app = docker.build("magdalenam/test")    
        }     
-      // stage('Test image') {           
-      //       app.inside {            
+      stage('Test image') {           
+            app.inside {            
              
-      //        sh 'echo "Tests passed"'        
-      //       }    
-      //   }     
+             sh 'echo "Tests passed"'        
+            }    
+        }     
       stage('Docker push') {
             steps{
                 script{
